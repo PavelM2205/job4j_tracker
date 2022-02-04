@@ -90,7 +90,6 @@ public class JukeBox {
     public static void main(String[] args) {
         JukeBox juke = new JukeBox();
         juke.music(1);
-        System.out.println();
         juke.music(2);
         System.out.println();
         juke.music(5);
