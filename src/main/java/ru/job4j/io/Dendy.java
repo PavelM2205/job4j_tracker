@@ -6,7 +6,7 @@ public class Dendy {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         boolean run = true;
-        while(run) {
+        while (run) {
             System.out.println("Игры");
             System.out.println("1. Танчики");
             System.out.println("2. Супер Марио");
