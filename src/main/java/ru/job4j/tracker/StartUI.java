@@ -4,7 +4,6 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.time.format.DateTimeFormatter;
 
-
 public class StartUI {
 
     public void init(Input input, Tracker tracker) {
