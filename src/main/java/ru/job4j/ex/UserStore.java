@@ -37,9 +37,9 @@ public class UserStore {
                 System.out.println("This user has an access");
         }
         } catch (UserInvalidException exc) {
-            exc.printStackTrace();
+            System.out.println(exc.getMessage());
         } catch (UserNotFoundException exc) {
-            exc.printStackTrace();
+            System.out.println(exc.getMessage());
         }
     }
 }
