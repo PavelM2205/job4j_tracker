@@ -106,8 +106,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test3"));
-        Input input = new StubInput(new String[] {"0", String.valueOf(item.getName()),
-                "1"});
+        Input input = new StubInput(new String[] {"0", item.getName(), "1"});
         UserAction[] actions = {new FindActionsByNames(out), new Exit()};
         new StartUI(out).init(input, tracker, actions);
         String ln = System.lineSeparator();
