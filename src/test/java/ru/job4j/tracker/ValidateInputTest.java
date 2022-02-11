@@ -22,8 +22,12 @@ public class ValidateInputTest {
         Output out = new StubOutput();
         Input in = new StubInput(new String[] {"1", "2", "3"});
         ValidateInput input = new ValidateInput(out, in);
-        int select = input.askInt("Enter menu:");
-        assertThat(select, is(1));
+        int select1 = input.askInt("Enter menu:");
+        assertThat(select1, is(1));
+        int select2 = input.askInt("Enter menu:");
+        assertThat(select2, is(2));
+        int select3 = input.askInt("Enter menu:");
+        assertThat(select3, is(3));
     }
 
     @Test
