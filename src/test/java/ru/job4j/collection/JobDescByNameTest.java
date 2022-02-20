@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class JobDescByNameTest {
 
     @Test
-    public void compare() {
+    public void whenDescByName() {
         List<Job> jobs = Arrays.asList(
                 new Job("A", 2),
                 new Job("C", 4),
