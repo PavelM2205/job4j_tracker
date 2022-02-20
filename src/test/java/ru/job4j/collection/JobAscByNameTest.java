@@ -13,12 +13,12 @@ public class JobAscByNameTest {
     @Test
     public void whenAscByName() {
         List<Job> jobs = Arrays.asList(
-                new Job("A", 2),
+                new Job("A", 3),
                 new Job("C", 4),
                 new Job("B", 1)
         );
         List<Job> expected = Arrays.asList(
-                new Job("A", 2),
+                new Job("A", 3),
                 new Job("B", 1),
                 new Job("C", 4)
         );
