@@ -15,12 +15,14 @@ public class FunctionalInterfaces {
         biCon.accept(6, "six");
         biCon.accept(7, "seven");
 
-        Predicate<Integer> pred = (num) -> {
-            return num % 2 == 0 || map.get(num).length() == 4;
+        BiPredicate<Integer, String> pred = (key, value) -> {
+            return key % 2 == 0 || value.length() == 4;
         };
-        for (Integer i : map.keySet()) {
-            if (pred.test(i)) {
-                System.out.println("key: " + i + " value " + map.get(i));
+        for (Map.Entry<Integer, String> mp : map.entrySet()) {
+            Integer key = mp.getKey();
+            String value = mp.getValue();
+            if (pred.test(key, value)) {
+                System.out.println("key: " + key + " value " + value);
             }
         }
         Supplier<List<String>> sup = () -> new ArrayList<>(map.values());
