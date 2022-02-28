@@ -14,12 +14,10 @@ public class Profiles {
     }
 
     public static List<Address> collectSortWithoutDuplicate(List<Profile> profiles) {
-        List<Address> result = new ArrayList<>();
-        result = profiles.stream()
+        return profiles.stream()
                 .map(Profile::getAddress)
                 .sorted(Comparator.comparing(Address::getCity))
                 .distinct()
                 .collect(Collectors.toList());
-        return result;
     }
 }
