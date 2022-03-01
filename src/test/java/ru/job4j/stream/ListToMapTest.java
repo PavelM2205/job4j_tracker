@@ -1,5 +1,6 @@
 package ru.job4j.stream;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
