@@ -2,6 +2,8 @@ package ru.job4j.bank;
 
 import org.junit.Test;
 
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 
 public class BankServiceTest {
@@ -11,7 +13,7 @@ public class BankServiceTest {
         User user = new User("3434", "Petr Arsentev");
         BankService bank = new BankService();
         bank.addUser(user);
-        assertEquals(user, bank.findByPassport("3434"));
+        assertEquals(user, bank.findByPassport("3434").get());
     }
 
     @Test
@@ -20,7 +22,7 @@ public class BankServiceTest {
         BankService bank = new BankService();
         bank.addUser(user);
         bank.addAccount(user.getPassport(), new Account("5546", 150D));
-        assertNull(bank.findByRequisite("34", "5546"));
+        assertEquals(Optional.empty(), bank.findByRequisite("34", "5546"));
     }
 
     @Test
@@ -30,7 +32,7 @@ public class BankServiceTest {
         bank.addUser(user);
         bank.addAccount(user.getPassport(), new Account("5546", 150D));
         assertEquals(150D,
-                bank.findByRequisite("3434", "5546").getBalance(),
+                bank.findByRequisite("3434", "5546").get().getBalance(),
                 0.001);
     }
 
@@ -44,6 +46,6 @@ public class BankServiceTest {
         bank.transferMoney(user.getPassport(), "5546", user.getPassport(),
                 "113", 150D);
         assertEquals(200D, bank.findByRequisite(user.getPassport(),
-                "113").getBalance(), 0.001);
+                "113").get().getBalance(), 0.001);
     }
 }
