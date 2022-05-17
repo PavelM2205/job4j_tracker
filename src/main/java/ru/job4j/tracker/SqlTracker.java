@@ -77,6 +77,14 @@ public class SqlTracker implements Store, AutoCloseable {
         return result;
     }
 
+    private Item getFromDB(ResultSet set) throws SQLException {
+        return new Item(
+                    set.getInt("id"),
+                    set.getString("name"),
+                    set.getTimestamp("created").toLocalDateTime()
+            );
+    }
+
     @Override
     public List<Item> findAll() {
         List<Item> result = new ArrayList<>();
@@ -84,10 +92,7 @@ public class SqlTracker implements Store, AutoCloseable {
                 "select * from items;")) {
             try (ResultSet set = statement.executeQuery()) {
                 while (set.next()) {
-                    result.add(new Item(
-                            set.getInt("id"),
-                            set.getString("name"),
-                            set.getTimestamp("created").toLocalDateTime()));
+                    result.add(getFromDB(set));
                 }
             }
         } catch (SQLException exc) {
@@ -104,10 +109,7 @@ public class SqlTracker implements Store, AutoCloseable {
             statement.setString(1, key);
             try (ResultSet set = statement.executeQuery()) {
                 while (set.next()) {
-                    result.add(new Item(
-                            set.getInt("id"),
-                            set.getString("name"),
-                            set.getTimestamp("created").toLocalDateTime()));
+                    result.add(getFromDB(set));
                 }
             }
         } catch (SQLException exc) {
@@ -124,11 +126,7 @@ public class SqlTracker implements Store, AutoCloseable {
             statement.setInt(1, id);
             try (ResultSet set = statement.executeQuery()) {
                 if (set.next()) {
-                    result = new Item(
-                            set.getInt("id"),
-                            set.getString("name"),
-                            set.getTimestamp("created").toLocalDateTime()
-                    );
+                    result = getFromDB(set);
                 }
             }
         } catch (SQLException exc) {
