@@ -64,7 +64,8 @@ public class SqlTrackerTest {
         tracker.add(first);
         tracker.replace(first.getId(), second);
         assertEquals(tracker.findById(first.getId()).getName(), second.getName());
-        assertEquals(tracker.findById(first.getId()).getCreated(), second.getCreated());
+        assertEquals(tracker.findById(first.getId()).getCreated().withNano(0),
+                second.getCreated().withNano(0));
     }
 
     @Test
