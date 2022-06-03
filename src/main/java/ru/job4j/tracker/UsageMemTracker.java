@@ -9,5 +9,4 @@ public class UsageMemTracker {
         }
         System.out.printf("Общее время работы %d", System.currentTimeMillis() - start);
     }
-
 }
