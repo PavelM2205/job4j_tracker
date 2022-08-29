@@ -1,9 +1,9 @@
 # Compiled class file
 *.class
 *.db
-
 # Log file
 *.log
+testdb.trace.db
 
 # BlueJ files
 *.ctxt
