@@ -1,15 +1,20 @@
 package ru.job4j.tracker;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Entity
+@Table(name = "items")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Item {
     @EqualsAndHashCode.Include
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @EqualsAndHashCode.Include
     private String name;
