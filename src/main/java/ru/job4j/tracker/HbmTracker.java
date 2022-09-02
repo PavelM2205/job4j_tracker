@@ -63,12 +63,14 @@ public class HbmTracker implements Store, AutoCloseable {
     public boolean delete(int id) {
         Transaction transaction = null;
         boolean result = false;
+        int update;
         try (Session session = sf.openSession()) {
             transaction = session.beginTransaction();
-            result = session.createMutationQuery(
+            update = session.createMutationQuery(
                     "DELETE Item WHERE id = :fId").setParameter("fId", id)
-                            .executeUpdate() > 0;
+                            .executeUpdate();
             transaction.commit();
+            result = update > 0;
         } catch (Exception exc) {
             if (transaction != null) {
                 transaction.rollback();
